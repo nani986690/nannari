@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Benefits of Nannari</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary-dark: #2d3436;
+            --accent-color: #f8a5c2; /* Soft pink for the consumption section */
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --card-bg: #ffffff;
+            --text-main: #4a4a4a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #636e72;
+            font-weight: 300;
+        }
+
+        /* Hero Image Placeholder */
+        .hero-box {
+            width: 100%;
+            height: 250px;
+            background: #dfe6e9;
+            border-radius: 24px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b2bec3;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* Benefit Cards */
+        .benefit-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon-container {
+            background: #f0f3f5;
+            padding: 15px;
+            border-radius: 15px;
+            color: #2d3436;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .benefit-content h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.25rem;
+            color: var(--primary-dark);
+        }
+
+        .benefit-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #636e72;
+        }
+
+        /* Consumption & Science Sections */
+        .info-section {
+            background: #fff0f6; /* Subtle pink tint from original */
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .info-section h2 {
+            font-family: 'Playfair Display', serif;
+            margin-top: 0;
+            color: var(--primary-dark);
+        }
+
+        .step-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background: #0984e3;
+            color: white;
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .science-section {
+            background: #fff0f6;
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 25px;
+        }
+
+        .science-text {
+            font-size: 0.9rem;
+            color: #444;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 15px;
+            }
+            .container {
+                max-width: 100%;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .benefit-card {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+                padding: 20px;
+            }
+            .icon-container {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+            .benefit-content h3 {
+                font-size: 1rem;
+            }
+            .benefit-content p {
+                font-size: 0.9rem;
+            }
+            .info-section,
+            .science-section {
+                padding: 20px;
+            }
+        }
+       
+
+.icon-container {
+  width: 22px;
+  height: 22px;
+  font-size: 18px;
+  color: #2bbec7;
+  background: rgba(43, 190, 199, 0.2);
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.benefit-card h4 {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.benefit-card p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #555;
+}
+
+    </style>
+</head>
+<body>
+  <header class="premium-header">
+    <div class="header-container">
+      <div class="nav-left">
+        <div class="menu-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <nav class="desktop-nav">
+          <a href="index.html">Product</a>
+          <a href="about.html">About Nannari</a>
+          <a href="healthbenfits.html">Health Benefits</a>
+          <a href="ingredients.html">Ingredients</a>
+        </nav>
+      </div>
+      <div class="logo-wrapper">
+        <img src="https://uploads.onecompiler.io/44544cwde/448kxrs9y/1000372126.jpg" alt="Nannari Sharbat Logo" class="brand-logo">
+      </div>
+      <div class="nav-right">
+        <div class="cart-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="cart-count">0</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<div class="container">
+    <header>
+        <h1>Health Benefits of Nannari</h1>
+        <p class="subtitle">Discover the incredible health benefits of this ancient Ayurvedic herb, backed by centuries of traditional use and modern research.</p>
+    </header>
+
+    <div class="hero-box">
+            </div>
+
+    <div class="benefit-card">
+        <div class="icon-container">
+            <i data-lucide="thermometer-snowflake"></i>
+        </div>
+        <div class="benefit-content">
+            <h3>Natural Body Coolant</h3>
+            <p>Nannari is renowned for its exceptional cooling properties. It helps reduce body heat naturally, making it perfect for hot summer days.</p>
+        </div>
+    </div>
+
+    <div class="benefit-card">
+        <div class="icon-container">
+            <i data-lucide="droplets"></i>
+        </div>
+        <div class="benefit-content">
+            <h3>Blood Purifier</h3>
+            <p>Acts as a natural blood purifier, helping to remove toxins and impurities from the bloodstream for clearer, healthier skin.</p>
+        </div>
+    </div>
+
+    <div class="benefit-card">
+        <div class="icon-container">
+            <i data-lucide="activity"></i>
+        </div>
+        <div class="benefit-content">
+            <h3>Urinary Health</h3>
+            <p>Supports kidney function and acts as a natural diuretic, helping to flush out toxins and prevent urinary tract infections.</p>
+        </div>
+    </div>
+
+    <div class="benefit-card">
+        <div class="icon-container">
+            <i data-lucide="shield-check"></i>
+        </div>
+        <div class="benefit-content">
+            <h3>Boosts Immunity</h3>
+            <p>Rich in antioxidants and essential nutrients, Nannari helps strengthen the immune system and supports defense mechanisms.</p>
+        </div>
+    </div>
+
+    <div class="info-section">
+        <h2>How to Consume Nannari Sharbat</h2>
+        <div class="step-list">
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <div>Mix 2-3 tablespoons of Nannari sharbat in a glass of cold water (200-250ml).</div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <div>Stir well and add ice cubes for a refreshing summer drink.</div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <div>Consume 1-2 glasses daily for best results, especially during hot weather.</div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">4</div>
+                <div>Can also be added to milk, smoothies, or used as a natural sweetener in desserts.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="science-section">
+        <h2>Backed by Science & Tradition</h2>
+        <p class="science-text">
+            Modern research has validated many of the traditional uses of Nannari. Studies have identified several bioactive compounds in the root, including flavonoids and saponins, which contribute to its therapeutic properties. Its effectiveness is documented in both Ayurvedic texts and contemporary scientific literature.
+        </p>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+</script>
+
+</body>
+</html>

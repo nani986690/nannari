@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingredients - Nannari Sharbat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* CSS STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .header p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 0.95rem;
+        }
+
+        .hero-img-container {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .hero-img-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Section Titles */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 30px 0 20px;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .section-header i {
+            color: #2d8a5a;
+        }
+
+        /* Grid Layout for Cards */
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 24px;
+            background: #fff;
+            transition: transform 0.2s;
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .card-top h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .badge {
+            background: #eefaf3;
+            color: #2d8a5a;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .card p {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: #f1f5f9;
+            color: #475569;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+        }
+
+        /* DON'T USE SECTION */
+        .dont-use-box {
+            background-color: #fff8f8;
+            border: 1px solid #ffebeb;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+        }
+
+        .dont-use-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #b91c1c;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .dont-use-box > p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .dont-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            list-style: none;
+        }
+
+        .dont-list li {
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #444;
+        }
+
+        .dont-list li i {
+            color: #ef4444;
+            font-size: 0.8rem;
+        }
+
+        /* NUTRITION SECTION */
+        .nutrition-card {
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .serving-text {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 25px;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 50px;
+            margin-bottom: 30px;
+        }
+
+        .stat-item {
+            padding-left: 15px;
+        }
+
+        .stat-item h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .stat-item span {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* Borders with colors */
+        .calories { border-left: 4px solid #3b82f6; }
+        .carbs { border-left: 4px solid #10b981; }
+        .fat { border-left: 4px solid #8b5cf6; }
+
+        .extra-info {
+            font-size: 0.85rem;
+            color: #444;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 20px;
+        }
+
+        .extra-info ul {
+            list-style: disc;
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            .ingredients-grid, .dont-list {
+                grid-template-columns: 1fr;
+            }
+            .stats-row {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .header h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .header h1 {
+                font-size: 1.3rem;
+            }
+            .ingredients-grid,
+            .dont-list {
+                grid-template-columns: 1fr;
+            }
+            .card {
+                padding: 16px;
+            }
+            .stat-item h4 {
+                font-size: 1.3rem;
+            }
+            .dont-use-box {
+                padding: 20px;
+            }
+        }
+  
+  
+  
+  
+    </style>
+</head>
+<body>
+  <header class="premium-header">
+    <div class="header-container">
+      <div class="nav-left">
+        <div class="menu-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <nav class="desktop-nav">
+          <a href="index.html">Product</a>
+          <a href="about.html">About Nannari</a>
+          <a href="healthbenfits.html">Health Benefits</a>
+          <a href="ingredients.html">Ingredients</a>
+        </nav>
+      </div>
+      <div class="logo-wrapper">
+        <img src="https://uploads.onecompiler.io/44544cwde/448kxrs9y/1000372126.jpg" alt="Nannari Sharbat Logo" class="brand-logo">
+      </div>
+      <div class="nav-right">
+        <div class="cart-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="cart-count">0</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<div class="container">
+    <header class="header">
+        <h1>Pure Natural Ingredients</h1>
+        <p>Transparency is our promise. We believe you deserve to know exactly what goes into every bottle of our Nannari Sharbat.</p>
+        <div class="hero-img-container">
+            <img src="https://images.unsplash.com/photo-1541233349642-6e425fe6190e?q=80&w=1000&auto=format&fit=crop" alt="Natural Herbs">
+        </div>
+    </header>
+
+    <div class="section-header">
+        <i class="fa-solid fa-leaf"></i> What's Inside
+    </div>
+
+    <div class="ingredients-grid">
+        <div class="card">
+            <div class="card-top">
+                <h3>Nannari Root Extract</h3>
+                <span class="badge">60%</span>
+            </div>
+            <p>Premium quality Hemidesmus indicus root extract sourced from organic farms in South India.</p>
+            <div class="tags">
+                <span class="tag">Natural coolant</span>
+                <span class="tag">Blood purifier</span>
+                <span class="tag">Rich in antioxidants</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-top">
+                <h3>Pure Cane Sugar</h3>
+                <span class="badge">35%</span>
+            </div>
+            <p>Unrefined natural cane sugar that adds sweetness while preserving essential minerals.</p>
+            <div class="tags">
+                <span class="tag">Natural energy source</span>
+                <span class="tag">Unrefined</span>
+                <span class="tag">No chemicals</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-top">
+                <h3>Citric Acid (Natural)</h3>
+                <span class="badge">3%</span>
+            </div>
+            <p>Naturally derived citric acid from citrus fruits that acts as a natural preservative.</p>
+            <div class="tags">
+                <span class="tag">Natural preservative</span>
+                <span class="tag">Enhances flavor</span>
+                <span class="tag">Vitamin C rich</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-top">
+                <h3>Cardamom & Spice Blend</h3>
+                <span class="badge">2%</span>
+            </div>
+            <p>A proprietary blend of cardamom and traditional spices that enhance aromatic profile.</p>
+            <div class="tags">
+                <span class="tag">Aromatic</span>
+                <span class="tag">Aids digestion</span>
+                <span class="tag">Traditional recipe</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="dont-use-box">
+        <div class="dont-use-header">
+            <i class="fa-regular fa-circle-xmark"></i> What We DON'T Use
+        </div>
+        <p>We are committed to providing you with the purest, most natural product. Here's what you'll NEVER find in our Nannari Sharbat:</p>
+        <ul class="dont-list">
+            <li><i class="fa-solid fa-circle-dot"></i> Artificial colors or dyes</li>
+            <li><i class="fa-solid fa-circle-dot"></i> Synthetic preservatives</li>
+            <li><i class="fa-solid fa-circle-dot"></i> High fructose corn syrup</li>
+            <li><i class="fa-solid fa-circle-dot"></i> Artificial flavoring agents</li>
+            <li><i class="fa-solid fa-circle-dot"></i> Chemical additives</li>
+            <li><i class="fa-solid fa-circle-dot"></i> GMO ingredients</li>
+            <li><i class="fa-solid fa-circle-dot"></i> Harmful chemicals or toxins</li>
+            <li><i class="fa-solid fa-circle-dot"></i> Animal-derived ingredients</li>
+        </ul>
+    </div>
+
+    <div class="section-header">
+        <i class="fa-solid fa-wine-glass"></i> Nutritional Information
+    </div>
+
+    <div class="nutrition-card">
+        <p class="serving-text">Per serving (30ml diluted in 200ml water)</p>
+        <div class="stats-row">
+            <div class="stat-item calories">
+                <h4>45</h4>
+                <span>Calories</span>
+            </div>
+            <div class="stat-item carbs">
+                <h4>11g</h4>
+                <span>Carbohydrates</span>
+            </div>
+            <div class="stat-item fat">
+                <h4>0g</h4>
+                <span>Fat</span>
+            </div>
+        </div>
+
+        <div class="extra-info">
+            <p>Also contains trace amounts of:</p>
+            <ul>
+                <li>Natural antioxidants from Nannari root</li>
+                <li>Essential oils and aromatic compounds</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section-header">
+        <i class="fa-solid fa-circle-check"></i> Our Quality Standards
+    </div>
+    <div class="ingredients-grid">
+        <div class="card">
+            <h3>Organic Sourcing</h3>
+            <p>All our herbs are sourced from certified organic farms that follow sustainable farming practices.</p>
+        </div>
+        <div class="card">
+            <h3>Lab Tested</h3>
+            <p>Every batch undergoes rigorous testing for purity, potency, and safety before reaching you.</p>
+        </div>
+        <div class="card">
+            <h3>Traditional Methods</h3>
+            <p>We follow time-honored Ayurvedic processing techniques to preserve the herb's natural properties.</p>
+        </div>
+        <div class="card">
+            <h3>No Compromise</h3>
+            <p>We never compromise on quality. Only the finest ingredients make it into our bottles.</p>
+        </div>
+    </div>
+
+    <div class="cert-banner">
+        <h2>Certifications & Compliance</h2>
+        <p>Our Nannari Sharbat is manufactured in FSSAI-certified facilities following strict hygiene and quality standards.</p>
+        <div class="cert-badges">
+            <span class="c-badge bg-green">FSSAI Certified</span>
+            <span class="c-badge bg-blue">Lab Tested</span>
+            <span class="c-badge bg-purple">100% Vegetarian</span>
+            <span class="c-badge bg-orange">No Preservatives</span>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
