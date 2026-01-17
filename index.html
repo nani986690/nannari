@@ -713,47 +713,45 @@ setInterval(()=>{
 },3000);
 
 /* ===== PRODUCT LOGIC ===== */
-const sizeCards=document.querySelectorAll(".size-card");
-const qtyWrap=document.getElementById("quantityWrapper");
-const qtyInput=document.getElementById("quantityInput");
-const btn=document.getElementById("addToCartBtn");
+const sizeCards = document.querySelectorAll(".size-card");
+const qtyWrap = document.getElementById("quantityWrapper");
+const qtyInput = document.getElementById("quantityInput");
+const btn = document.getElementById("addToCartBtn");
 
-let selectedPrice=0;
+let selectedProduct = null;
 
-sizeCards.forEach(card=>{
-  card.addEventListener("click",()=>{
-
-    sizeCards.forEach(c=>c.classList.remove("selected"));
+sizeCards.forEach(card => {
+  card.addEventListener("click", () => {
+    sizeCards.forEach(c => c.classList.remove("selected"));
     card.classList.add("selected");
 
-    const size=card.querySelector(".size-label").innerText;
-    const volume=card.querySelector(".volume").innerText;
-    const price=parseInt(card.querySelector(".price").innerText.replace(/\D/g,""));
+    const size = card.querySelector(".size-label").innerText;
+    const volume = card.querySelector(".volume").innerText;
+    const price = parseInt(card.querySelector(".price").innerText.replace(/\D/g, ""));
 
-    selectedPrice=price;
+    selectedProduct = {
+      name: "Nannari Sharbat",
+      size: size,
+      volume: volume,
+      price: price,
+      image: "https://uploads.onecompiler.io/44544cwde/449fkyese/1000374318.jpg"
+    };
 
-    localStorage.setItem("order_name","Nannari Sharbat");
-    localStorage.setItem("order_size",size);
-    localStorage.setItem("order_volume",volume);
-    localStorage.setItem("order_price",price);
-    localStorage.setItem("order_image",document.querySelector(".slide.active img").src);
+    qtyWrap.style.display = "block";
+    qtyInput.value = 1;
 
-    qtyWrap.style.display="block";
-    qtyInput.value=1;
-
-    btn.disabled=false;
+    btn.disabled = false;
     updateTotal();
   });
 });
 
-qtyInput.addEventListener("input",updateTotal);
+qtyInput.addEventListener("input", updateTotal);
 
-function updateTotal(){
+function updateTotal() {
+  if (!selectedProduct) return;
   let qty = parseInt(qtyInput.value);
-  if (isNaN(qty)) {
-    qty = 0;
-  }
-  btn.innerText = `Rs. ${qty * selectedPrice} | ADD TO CART`;
+  if (isNaN(qty) || qty < 1) qty = 1;
+  btn.innerText = `Rs. ${qty * selectedProduct.price} | ADD TO CART`;
 }
 
 qtyInput.addEventListener("blur", () => {
@@ -763,11 +761,24 @@ qtyInput.addEventListener("blur", () => {
   }
 });
 
-btn.addEventListener("click",()=>{
-  localStorage.setItem("order_qty",qtyInput.value);
-  localStorage.setItem("order_total",qtyInput.value*selectedPrice);
+btn.addEventListener("click", () => {
+  if (!selectedProduct) return;
+
+  const qty = parseInt(qtyInput.value) || 1;
+  const cartItem = {
+    ...selectedProduct,
+    id: Date.now(), // Unique ID
+    qty: qty,
+    total: qty * selectedProduct.price
+  };
+
+  // Get existing cart or initialize empty
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push(cartItem);
+  localStorage.setItem("cart", JSON.stringify(cart));
+
   updateCartBadge();
-  window.location.href="checkout.html";
+  window.location.href = "checkout.html";
 });
 </script>
 
@@ -795,9 +806,10 @@ const cartIcon = document.querySelector(".cart-icon");
 
 // 1. Cart Count Update (Page load ainappudu)
 function updateCartBadge() {
-    let currentCount = localStorage.getItem("order_qty") || 0;
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
     if (cartCountElement) {
-        cartCountElement.innerText = currentCount;
+        cartCountElement.innerText = totalQty;
     }
 }
 
