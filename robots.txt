@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Allow: /*.html
+Allow: /style.css
+Allow: /script.js
+
+Disallow: /admin/
+Disallow: /.git/
+Disallow: /.env
+
+Sitemap: https://nannari.co.in/sitemap.xml
+
+# Keywords for robots to index
+# Nannari
+# Nannari Dharmavaram
+# PNR Nannari
