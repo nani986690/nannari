@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+<<<<<<< HEAD
   // Add loaded class to body after small delay to ensure clean start
   window.addEventListener('load', () => {
     setTimeout(() => {
@@ -6,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100);
   });
 
+=======
+>>>>>>> 29a00eabda4f47c7577967867320520541102b07
   const menuIcon = document.querySelector('.menu-icon');
   const desktopNav = document.querySelector('.desktop-nav');
   let isMenuOpen = false;
