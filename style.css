@@ -385,11 +385,7 @@ body {
   background-color: #ffffff;
 }
 
-.product-selection-container {
-  max-width: 720px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
+
 
 /* Features Header */
 .features-bar {
@@ -604,6 +600,7 @@ section.container {
   .product-selection-container {
     margin: 30px auto;
     padding: 0 15px;
+
   }
 
   .features-bar {
@@ -721,6 +718,7 @@ section.container {
   .product-selection-container {
     margin: 20px auto;
     padding: 0 10px;
+        
   }
 
   .features-bar {
@@ -782,7 +780,7 @@ section.container {
   }
   
   .size-card .price {
-    font-size: 10px;
+    font-size: 15px;
   }
 }
   .size-label {
@@ -966,7 +964,7 @@ section.container {
     width: 100%; 
     max-width: none; 
     
-    background: linear-gradient(90deg, #fff5f5 0%, #ffebeb 50%, #fff5f5 100%);
+    background: #FFFf00;
     border-top: 1px solid rgba(211, 47, 47, 0.1);
     border-bottom: 1px solid rgba(211, 47, 47, 0.1);
     padding: 12px 0; /* Left/Right padding teesi animation smooth chesam */
@@ -981,8 +979,15 @@ section.container {
 .marquee-content {
     display: flex;
     white-space: nowrap;
-    /* Animation speed control */
+    /* Initial position off-screen left */
+    transform: translateX(100%);
+    /* Animation speed control - only runs when page is ready */
     animation: premium-scroll 20s linear infinite;
+    will-change: transform;
+}
+
+.is-loaded .marquee-content {
+    animation-play-state: running;
 }
 
 .marquee-promo {
@@ -1011,11 +1016,11 @@ section.container {
     letter-spacing: -0.5px;
 }
 
-.amount { color: #d32f2f; font-weight: 800; }
+.amount { color:black; font-weight: 800; }
 
 @keyframes premium-scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); } 
 }
 
 /* Hover chesthe aagipothundi */
@@ -1114,6 +1119,7 @@ section.container {
     padding: 30px 20px !important;
     border-radius: 20px !important;
     box-shadow: 0 4px 20px rgba(0,0,0,0.05) !important;
+    
   }
 
   .benefit-inline-item {
@@ -1171,6 +1177,7 @@ section.container {
     max-width: 1100px !important;
     margin: 40px auto !important;
     padding: 0 40px !important;
+        
   }
 
   section.container {
@@ -1288,6 +1295,7 @@ section.container {
     padding: 40px 40px !important;
     justify-content: space-around !important;
     gap: 30px !important;
+    ;
   }
 
   .benefit-inline-item {
