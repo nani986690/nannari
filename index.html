@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <style>
+  body{
+    background-color: #FFF9e3;
+  }
 .inline-benefits-container {
             display: flex;
         flex-direction: row;
@@ -356,30 +359,41 @@
 }
 
 .reviews-slider {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    padding: 20px 0;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
 .reviews-track {
-    display: flex;
-    width: calc(320px * 14); /* (Card width + margin) * total cards */
-    animation: scrollAnimation 30s linear infinite;
+  display: flex;
+  gap: 20px;                 /* space between cards */
+  width: max-content;        /* important */
+  animation: scrollReviews 30s linear infinite;
+}
+
+/* pause until page is ready (optional) */
+.is-loaded .reviews-track {
+  animation-play-state: running;
 }
 
 .review-card {
-    width: 300px;
-    background: #fff;
-    margin: 0 10px;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    flex-shrink: 0; /* Cards ni compress avvakunda chestundi */
-    white-space: normal;
-    border: 1px solid #eee;
+  min-width: 300px;          /* FIXED width is important */
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  flex-shrink: 0;
 }
 
+/* Infinite animation */
+@keyframes scrollReviews {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
 .stars {
     color: #f39c12;
     margin-bottom: 10px;
@@ -391,10 +405,10 @@
     font-size: 14px;
 }
 
-/* Keyframes for smooth infinite movement */
+/* Keyframes for smooth infinite movement (Left to Right) */
 @keyframes scrollAnimation {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-320px * 10)); } /* Moves exactly 10 cards */
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
 }
 
 /* Pause on Hover */
@@ -421,6 +435,47 @@
 </style>
 <body>
   <header class="premium-header">
+    <!-- Floating marquee placed in its own section -->
+<section class="floating-marquee-section">
+  <div class="premium-marquee-container">
+    <div class="marquee-content">
+      <div class="marquee-promo">
+        <span class="label">EXCLUSIVE OFFER</span>
+        <span class="main-text">Buy 750ml x 2, Get <span class="amount">₹50</span> Cashback</span>
+      </div>
+      <div class="marquee-promo">
+        <span class="label">EXCLUSIVE OFFER</span>
+        <span class="main-text">Buy 750ml x 2, Get <span class="amount">₹50</span> Cashback</span>
+      </div>
+      <div class="marquee-promo">
+        <span class="label">EXCLUSIVE OFFER</span>
+        <span class="main-text">Buy 750ml x 2, Get <span class="amount">₹50</span> Cashback</span>
+      </div>
+      <div class="marquee-promo">
+        <span class="label">EXCLUSIVE OFFER</span>
+        <span class="main-text">Buy 750ml x 2, Get <span class="amount">₹50</span> Cashback</span>
+      </div>
+      <!-- Duplicate for seamless loop -->
+      <div class="marquee-promo">
+        <span class="label">EXCLUSIVE OFFER</span>
+        <span class="main-text">Buy 750ml x 2, Get <span class="amount">₹50</span> Cashback</span>
+      </div>
+      <div class="marquee-promo">
+        <span class="label">EXCLUSIVE OFFER</span>
+        <span class="main-text">Buy 750ml x 2, Get <span class="amount">₹50</span> Cashback</span>
+      </div>
+      <div class="marquee-promo">
+        <span class="label">EXCLUSIVE OFFER</span>
+        <span class="main-text">Buy 750ml x 2, Get <span class="amount">₹50</span> Cashback</span>
+      </div>
+      <div class="marquee-promo">
+        <span class="label">EXCLUSIVE OFFER</span>
+        <span class="main-text">Buy 750ml x 2, Get <span class="amount">₹50</span> Cashback</span>
+      </div>
+      
+    </div>
+  </div>
+</section>
   <div class="header-container">
     <div class="nav-left">
       <div class="menu-icon">
@@ -465,31 +520,6 @@
     <a href="return&refundpolicy.html" class="section-nav-link">Return & Refund</a>
   </div>
 </nav>
-
-<!-- Floating marquee placed in its own section -->
-<section class="floating-marquee-section">
-  <div class="premium-marquee-container">
-    <div class="marquee-content">
-      <div class="marquee-promo">
-        <span class="label">EXCLUSIVE OFFER</span>
-        <span class="main-text">Buy 750ml x 2, Get <span class="amount">₹50</span> Cashback</span>
-      </div>
-      <div class="marquee-promo">
-        <span class="label">EXCLUSIVE OFFER</span>
-        <span class="main-text">Buy 750ml x 2, Get <span class="amount">₹50</span> Cashback</span>
-      </div>
-      <div class="marquee-promo">
-        <span class="label">EXCLUSIVE OFFER</span>
-        <span class="main-text">Buy 750ml x 2, Get <span class="amount">₹50</span> Cashback</span>
-      </div>
-      <div class="marquee-promo">
-        <span class="label">EXCLUSIVE OFFER</span>
-        <span class="main-text">Buy 750ml x 2, Get <span class="amount">₹50</span> Cashback</span>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="hero">
   <div class="slider-container">
     <div class="slide active">
@@ -531,35 +561,116 @@
     <span class="ml">(1000ml)</span>
 </div>
 </section>
-<div class="product-selection-container">
-  
- <div class="inline-benefits-container">
-    <div class="benefit-inline-item">
-        <div class="icon-circle"><i data-lucide="leaf"></i></div>
-        <div class="text-group">
-            <span class="top-text">100% Natural</span>
-            <span class="bottom-text">Ingredients</span>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<div class="green-benefits-bar">
+    <div class="green-benefit-card">
+        <div class="green-icon-wrapper"><i data-lucide="leaf"></i></div>
+        <div class="green-label-stack">
+            <span class="green-text-primary">100% Natural</span>
+            <span class="green-text-secondary">Ingredients</span>
         </div>
     </div>
 
-    <div class="benefit-inline-item">
-        <div class="icon-circle"><i data-lucide="thermometer-snowflake"></i></div>
-        <div class="text-group">
-            <span class="top-text">Cooling</span>
-            <span class="bottom-text">Effect</span>
+    <div class="green-benefit-card">
+        <div class="green-icon-wrapper"><i data-lucide="thermometer-snowflake"></i></div>
+        <div class="green-label-stack">
+            <span class="green-text-primary">Cooling</span>
+            <span class="green-text-secondary">Effect</span>
         </div>
     </div>
 
-    <div class="benefit-inline-item">
-        <div class="icon-circle"><i data-lucide="scroll"></i></div>
-        <div class="text-group">
-            <span class="top-text">Traditional</span>
-            <span class="bottom-text">Recipe</span>
+    <div class="green-benefit-card">
+        <div class="green-icon-wrapper"><i data-lucide="scroll"></i></div>
+        <div class="green-label-stack">
+            <span class="green-text-primary">Traditional</span>
+            <span class="green-text-secondary">Recipe</span>
         </div>
     </div>
 </div>
-  </div>
 
+<style>
+    /* Main bar container */
+    .green-benefits-bar {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        align-items: center;
+        gap: 15px;
+        padding: 20px 10px;
+        width: 100%;
+        background: #e8f5e9; /* Light Mint Green Background */
+        border-radius: 12px;
+    }
+
+    /* Individual item wrapper */
+    .green-benefit-card {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: fit-content;
+    }
+
+    /* Circle behind the icon */
+    .green-icon-wrapper {
+        width: 40px;
+        height: 40px;
+        background: #c8e6c9; /* Slightly darker green for the circle */
+        color: #2e7d32; /* Deep green for the icon */
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    /* Lucide icon sizing */
+    .green-icon-wrapper i, 
+    .green-icon-wrapper svg {
+        width: 20px !important;
+        height: 20px !important;
+        stroke-width: 2.5px;
+    }
+
+    /* Text grouping */
+    .green-label-stack {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .green-text-primary {
+        font-size: 13px;
+        font-weight: 700;
+        color: #1b5e20; /* Darker green text */
+        line-height: 1.2;
+    }
+
+    .green-text-secondary {
+        font-size: 11px;
+        color: #4caf50; /* Medium green text */
+        line-height: 1.2;
+    }
+
+    /* Mobile view adjustments */
+    @media (max-width: 480px) {
+        .green-benefits-bar {
+            gap: 8px;
+            padding: 15px 5px;
+            justify-content: space-between;
+        }
+        .green-text-primary { font-size: 11px; }
+        .green-text-secondary { font-size: 10px; }
+        .green-icon-wrapper { width: 34px; height: 34px; }
+        .green-icon-wrapper i, 
+        .green-icon-wrapper svg { width: 16px !important; height: 16px !important; }
+    }
+</style>
+
+<script>
+    lucide.createIcons();
+</script>
   <h3 class="section-titlee">Select Size:</h3>
   <div class="size-options">
     <div class="size-card">
