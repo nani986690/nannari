@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuIcon = document.querySelector('.menu-icon');
   const desktopNav = document.querySelector('.desktop-nav');
   let isMenuOpen = false;
-
   if (menuIcon && desktopNav) {
     menuIcon.addEventListener('click', () => {
       isMenuOpen = !isMenuOpen;
